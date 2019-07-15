@@ -36,7 +36,7 @@
     
     
       
-        <title>Material-UI Components - Documentation | Dafiti Automation Material Design - UI (DAMD-UI)</title>
+        <title>Themes - Documentation | Dafiti Automation Material Design - UI (DAMD-UI)</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#material-ui-components" tabindex="1" class="md-skip">
+      <a href="#themes" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Material-UI Components
+                Themes
               
             </span>
           
@@ -180,11 +180,49 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../themes/" title="Themes" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Themes
+      </label>
+    
+    <a href="./" title="Themes" class="md-nav__link md-nav__link--active">
       Themes
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#switching-themes" title="Switching themes" class="md-nav__link">
+    Switching themes
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -204,20 +242,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Material-UI Components" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../material-ui/" title="Material-UI Components" class="md-nav__link">
       Material-UI Components
     </a>
-    
   </li>
 
     
@@ -370,6 +399,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#switching-themes" title="Switching themes" class="md-nav__link">
+    Switching themes
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -381,24 +426,12 @@
               
                 
                 
-                <h1 id="material-ui-components">Material-UI Components</h1>
-<p>DAMD-UI uses Material-UI in most of the form controllers. If you're building a form we recommend you to learn more about <a href="../form">Formik in DAMD-UI</a> or else, if you're building a layout or creating a custom component you can use the Material-UI components (through DAMD-UI) to achieve your goal without having to code everything from scratch.</p>
-<p><strong>Warning: You DON'T need to install any Material-UI package.</strong></p>
-<p>Go to <a href="https://material-ui.com/getting-started/usage/">Material-UI Docs</a> to learn more about all the components and features.</p>
-<p>To use Material-UI components in DAMD-UI you just need to change the import path. DAMD-UI have the 3 packages of Material-UI <code>core</code>, <code>styles</code> and <code>icons</code>. For example, if you would import those packages:</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Box</span><span class="p">,</span> <span class="nx">Grid</span><span class="p">,</span> <span class="nx">Paper</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/core&#39;</span>
-<span class="kr">import</span> <span class="nx">FavoriteIcon</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/icons/Favorite&#39;</span>
-</pre></div>
-
-
-<p>You should import as follows:</p>
-<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Box</span><span class="p">,</span> <span class="nx">Grid</span><span class="p">,</span> <span class="nx">Paper</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;damd-ui/dist/core&#39;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Favorite</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;damd-ui/dist/icons&#39;</span>
-</pre></div>
-
-
-<p>The component attributes are the same.</p>
-<p>That's necessary to keep basic components centralized and allow future changes without headaches.</p>
+                <h1 id="themes">Themes</h1>
+<p>DAMD-UI has two themes, the Light Theme and the Dark Theme. You probably won't need to configure anything for it to work on your application. The <a href="../material-ui">Material-UI components</a> will change automatically every time you change the theme.</p>
+<h3 id="switching-themes">Switching themes</h3>
+<p>The <code>Layout</code> component already have an optional switch at the right corner of the <code>AppBar</code>.</p>
+<p>You also can import the <code>ThemeSwitcher</code> component from <code>damd-ui</code> and place it anywhere you like.</p>
+<p>Another option is to import <code>useSwitchTheme</code> hook which returns <code>[themeInfo, switcher]</code>, a <code>ThemeInfo</code> object with the information of the current theme and a <code>switcher</code> function that can be called at any moment to switch the theme.</p>
                 
                   
                 
@@ -419,7 +452,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../form/" title="Forms" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -428,19 +461,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Forms
+                Home
               </span>
             </div>
           </a>
         
         
-          <a href="../api/components/layout/" title="Layout" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../form/" title="Forms" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Layout
+                Forms
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
