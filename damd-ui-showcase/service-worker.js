@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/damd-ui-showcase/precache-manifest.93e77589a3f45c3dba7239c4ff0a1d24.js"
+  "/damd-ui-showcase/precache-manifest.e5908fa55f7807154ffb73b822178ae8.js"
 );
 
 self.addEventListener('message', (event) => {
