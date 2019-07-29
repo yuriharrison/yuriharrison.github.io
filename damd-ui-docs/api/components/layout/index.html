@@ -300,6 +300,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#profile-avatar-example" title="Profile Avatar Example" class="md-nav__link">
+    Profile Avatar Example
+  </a>
+  
+</li>
+      
       
       
       
@@ -308,6 +315,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../menu/" title="LateralMenu" class="md-nav__link">
+      LateralMenu
+    </a>
   </li>
 
         
@@ -427,6 +446,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#profile-avatar-example" title="Profile Avatar Example" class="md-nav__link">
+    Profile Avatar Example
+  </a>
+  
+</li>
+      
       
       
       
@@ -445,16 +471,19 @@
                 
                 
                 <h1 id="api-layout">API: Layout</h1>
-<p>Default Layout, a single AppBar with default color and position set to <code>sticky</code>.</p>
+<p>Default Layout, a single AppBar with default color and position set to <code>fixed</code>.</p>
 <h4 id="props">Props</h4>
 <ul>
 <li><code>title</code> - Title of the AppBar</li>
-<li><code>Slot</code> - Space after the Title</li>
+<li><code>MenuSlot</code> - Left Menu. If not defined the left menu will be automatically hidden. See an example with <a href="../menu/">LateralMenu</a></li>
+<li><code>AfterTitleSlot</code> - Space after the title</li>
 <li><code>hideThemeSwitch</code> - Hide the ThemeSwitch component</li>
+<li><code>showProfile</code> - Show Profile Avatar. If not defined the Avatar will be automatically hidden. See an example <a href="#profile-avatar-example">below</a></li>
 <li><code>children</code> - Positioned bellow the AppBar</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nx">Props</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropsWithChildren</span><span class="o">&lt;</span><span class="p">{</span>
-  <span class="nx">Slot</span><span class="o">?:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span>
+<div class="codehilite"><pre><span></span><span class="nx">type</span> <span class="nx">AppBarProps</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropsWithChildren</span><span class="o">&lt;</span><span class="p">{</span>
+  <span class="nx">AfterTitleSlot</span><span class="o">?:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span>
+  <span class="nx">MenuSlot</span><span class="o">?:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">open</span><span class="o">:</span> <span class="kr">boolean</span> <span class="p">}</span><span class="o">&gt;</span>
   <span class="nx">title</span><span class="o">:</span> <span class="nx">string</span>
   <span class="nx">hideThemeSwitch</span><span class="o">?:</span> <span class="kr">boolean</span>
 <span class="p">}</span><span class="o">&gt;</span>
@@ -470,13 +499,73 @@
   <span class="p">...</span>
     <span class="o">&lt;</span><span class="nx">Layout</span>
       <span class="nx">title</span><span class="o">=</span><span class="s1">&#39;My Application&#39;</span>
-      <span class="nx">Slot</span><span class="o">=</span><span class="p">{</span><span class="nx">NavBar</span><span class="p">}</span>
+      <span class="nx">MenuSlot</span><span class="o">=</span><span class="p">{</span><span class="nx">NavBar</span><span class="p">}</span>
       <span class="nx">hideThemeSwitch</span>
     <span class="o">&gt;</span>
         <span class="p">...</span>
     <span class="o">&lt;</span><span class="err">/Layout&gt;</span>
   <span class="p">...</span>
 <span class="p">)</span>
+</pre></div>
+
+
+<h3 id="profile-avatar-example">Profile Avatar Example</h3>
+<ul>
+<li><code>showProfile</code> Prop Type:</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">showProfile</span><span class="o">:</span> <span class="nx">ProfileAvatarProps</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">alt</span><span class="o">:</span> <span class="nx">string</span>
+  <span class="nx">src</span><span class="o">?:</span> <span class="nx">string</span>
+  <span class="nx">Slot</span><span class="o">?:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>Layout prop:</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="p">...</span>
+  <span class="o">&lt;</span><span class="nx">Layout</span>
+    <span class="p">...</span>
+    <span class="nx">showProfile</span><span class="o">=</span><span class="p">{{</span>
+      <span class="nx">alt</span><span class="o">:</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span>
+      <span class="nx">src</span><span class="o">:</span><span class="s1">&#39;profilePicture.png&#39;</span><span class="p">,</span>
+      <span class="nx">Slot</span><span class="o">:</span> <span class="nx">ProfileDetail</span>
+    <span class="p">}}</span>
+    <span class="p">...</span>
+  <span class="o">&gt;</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<ul>
+<li>Detail slot:</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Paper</span><span class="p">,</span> <span class="nx">Box</span><span class="p">,</span> <span class="nx">Typography</span><span class="p">,</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">Avatar</span><span class="p">,</span> <span class="nx">Grid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../../lib/core&#39;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">ProfileDetail</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Paper</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Box</span> <span class="nx">padding</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span> <span class="nx">paddingTop</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span> <span class="nx">alignContent</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Avatar</span><span class="o">&gt;</span><span class="nx">YH</span><span class="o">&lt;</span><span class="err">/Avatar&gt;</span>
+          <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Typography</span> <span class="nx">variant</span><span class="o">=</span><span class="s1">&#39;h6&#39;</span><span class="o">&gt;</span><span class="nx">Yuri</span> <span class="nx">Harrison</span><span class="o">&lt;</span><span class="err">/Typography&gt;</span>
+          <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Box</span> <span class="nx">mt</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">justify</span><span class="o">=</span><span class="s1">&#39;flex-end&#39;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">variant</span><span class="o">=</span><span class="s1">&#39;outlined&#39;</span><span class="o">&gt;</span><span class="nx">SIGN</span> <span class="nx">OUT</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
+          <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Box&gt;</span>
+      <span class="o">&lt;</span><span class="err">/Box&gt;</span>
+    <span class="o">&lt;</span><span class="err">/Paper&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
                 
                   
@@ -513,13 +602,13 @@
           </a>
         
         
-          <a href="../paper/" title="Paper" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../menu/" title="LateralMenu" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Paper
+                LateralMenu
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

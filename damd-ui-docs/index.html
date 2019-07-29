@@ -374,6 +374,18 @@
 
 
   <li class="md-nav__item">
+    <a href="api/components/menu/" title="LateralMenu" class="md-nav__link">
+      LateralMenu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="api/components/paper/" title="Paper" class="md-nav__link">
       Paper
     </a>
@@ -605,7 +617,21 @@
 <span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">Yup</span> <span class="nx">from</span> <span class="s1">&#39;yup&#39;</span>
 
 <span class="c1">// Import Material-UI Components</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">MenuList</span><span class="p">,</span> <span class="nx">MenuItem</span><span class="p">,</span> <span class="nx">Typography</span><span class="p">,</span> <span class="nx">Grid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;damd-ui/dist/core&#39;</span>
+<span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">Button</span><span class="p">,</span>
+  <span class="nx">MenuList</span><span class="p">,</span>
+  <span class="nx">MenuItem</span><span class="p">,</span>
+  <span class="nx">Typography</span><span class="p">,</span>
+  <span class="nx">Grid</span><span class="p">,</span>
+  <span class="nx">Divider</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;damd-ui/dist/core&#39;</span>
+
+<span class="c1">// Import Material-UI icons</span>
+<span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">Inbox</span> <span class="nx">as</span> <span class="nx">InboxIcon</span><span class="p">,</span>
+  <span class="nx">Favorite</span> <span class="nx">as</span> <span class="nx">FavoriteIcon</span><span class="p">,</span>
+  <span class="nx">MobileOff</span> <span class="nx">as</span> <span class="nx">MobileOffIcon</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;damd-ui/dist/icons&#39;</span>
 
 <span class="c1">// Import ThemeProvider, Default Layout and Paper,</span>
 <span class="c1">// Formik components and TextField Controller</span>
@@ -617,6 +643,8 @@
   <span class="nx">Form</span><span class="p">,</span>
   <span class="nx">FormikProps</span><span class="p">,</span>
   <span class="nx">TextField</span><span class="p">,</span>
+  <span class="nx">LateralMenu</span><span class="p">,</span>
+  <span class="nx">MenuItem</span><span class="p">,</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;damd-ui&#39;</span>
 
 <span class="c1">// Defining validation schema</span>
@@ -631,20 +659,33 @@
   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="c1">// Defining NavBar to be rendered on the AppBar slot</span>
-<span class="c1">// in the Layout component</span>
-<span class="kr">const</span> <span class="nx">NavBar</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
-  <span class="o">&lt;</span><span class="nx">MenuList</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">display</span><span class="o">:</span> <span class="s1">&#39;flex&#39;</span><span class="p">,</span> <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">&#39;row&#39;</span> <span class="p">}}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">MenuItem</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Menu Item clicked&#39;</span><span class="p">)}</span><span class="o">&gt;</span>
-      <span class="nx">Menu</span> <span class="nx">Item</span>
-    <span class="o">&lt;</span><span class="err">/MenuItem&gt;</span>
-  <span class="o">&lt;</span><span class="err">/MenuList&gt;</span>
+<span class="c1">// Defining NavBar to be rendered on the AppBar lateral menu slot</span>
+<span class="kr">const</span> <span class="nx">NavBar</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">open</span> <span class="p">}</span><span class="o">:</span> <span class="p">{</span> <span class="nx">open</span><span class="o">:</span> <span class="kr">boolean</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">LateralMenu</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">MenuItem</span>
+      <span class="nx">label</span><span class="o">=</span><span class="s1">&#39;Item 1&#39;</span>
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Menu Item 1 Clicked&#39;</span><span class="p">)}</span>
+      <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">InboxIcon</span> <span class="nx">color</span><span class="o">=</span><span class="s1">&#39;primary&#39;</span> <span class="o">/&gt;</span><span class="p">}</span>
+    <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">MenuItem</span>
+      <span class="nx">label</span><span class="o">=</span><span class="s1">&#39;Item 2&#39;</span>
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Menu Item 2 Clicked&#39;</span><span class="p">)}</span>
+      <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">MobileOffIcon</span> <span class="o">/&gt;</span><span class="p">}</span>
+      <span class="nx">disabled</span>
+    <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Divider</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">MenuItem</span>
+      <span class="nx">label</span><span class="o">=</span><span class="s1">&#39;Item 3&#39;</span>
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Menu Item 3 Clicked&#39;</span><span class="p">)}</span>
+      <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">FavoriteIcon</span> <span class="nx">color</span><span class="o">=</span><span class="s1">&#39;secondary&#39;</span> <span class="o">/&gt;</span><span class="p">}</span>
+    <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="err">/LateralMenu&gt;</span>
 <span class="p">)</span>
 
 <span class="kr">export</span> <span class="kr">const</span> <span class="nx">App</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">ThemeProvider</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">Layout</span> <span class="nx">title</span><span class="o">=</span><span class="s1">&#39;My Application&#39;</span> <span class="nx">Slot</span><span class="o">=</span><span class="p">{</span><span class="nx">NavBar</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Layout</span> <span class="nx">title</span><span class="o">=</span><span class="s1">&#39;My Application&#39;</span> <span class="nx">MenuSlot</span><span class="o">=</span><span class="p">{</span><span class="nx">NavBar</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">Paper</span><span class="o">&gt;</span>
           <span class="o">&lt;</span><span class="nx">Formik</span>
             <span class="nx">initialValues</span><span class="o">=</span><span class="p">{</span><span class="nx">initialValues</span><span class="p">}</span>
